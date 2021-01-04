@@ -10,7 +10,12 @@ const port = 3000;
 app.get('/', (_req, res) => {
     res.send('This is the Image Processing API');
 });
-app.use(imagesRoute.BASE_ROUTE, imagesRoute.default);
+app.use(imagesRoute.BASE_PATH, imagesRoute.default);
+// Error handling
+app.use((_err: Error, _req: any, res: any, _next: any) => {
+    res.status(500);
+    res.send('Internal Server Error');
+})
 
 const httpServer = stoppable(http.createServer(app), 29 * 1000);
 httpServer.listen(port, () => {
