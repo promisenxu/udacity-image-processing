@@ -3,8 +3,8 @@ import path from 'path';
 import { checkIfFileExist } from './commons';
 
 const FILE_EXTENSION = '.jpg';
-const SOURCE_IMAGES_FOLDER = '../images/source/';
-const CACHE_IMAGES_FOLDER = '../images/cache/';
+const SOURCE_IMAGES_FOLDER = './';
+const CACHE_IMAGES_FOLDER = './';
 
 const getSourceImageFilepath = (
     fileNameWithoutExtension: string
@@ -45,6 +45,7 @@ export const getReadyResizedImageFilepath = async (
     height?: number
 ) => {
     const sourceFilepath = getSourceImageFilepath(fileNameWithoutExtension);
+    console.log(`Source ${sourceFilepath}`);
     const doesSourceExist = await checkIfFileExist(sourceFilepath);
     if (!doesSourceExist) {
         throw new Error('Source image does not exist');
@@ -55,6 +56,7 @@ export const getReadyResizedImageFilepath = async (
         width,
         height
     );
+    console.log(`Cache ${cacheFilepath}`);
     const doesCacheVersionExist = await checkIfFileExist(cacheFilepath);
     if (!doesCacheVersionExist) {
         await resizeImageToFilepath(
