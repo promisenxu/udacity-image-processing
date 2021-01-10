@@ -57,7 +57,7 @@ This repo provides one single endpoint, at **/images/:imageName**, with the func
 
 There are two possible parameters to provided to the endpoint to specify how you want the source image to be resized, width and height.
 
-For example, to resize the fjord image to width 100 and height 100:
+For example, to resize the **fjord** image to width 100 and height 100:
 [http://localhost:3000/images/fjord?width=100&height=100](http://localhost:3000/images/fjord?width=100&height=100)
 
 ### Caching
