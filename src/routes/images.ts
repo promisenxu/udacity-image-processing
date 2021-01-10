@@ -28,8 +28,10 @@ router.get(
                 req.query.height ? parseInt(req.query.height, 10) : undefined
             );
             res.sendFile(cachedFilepath, (error: Error) => {
-                res.status(400);
-                res.send('Unknown error when sending response: ' + error);
+                if (error) {
+                    res.status(400);
+                    res.send('Unknown error when sending response: ' + error);
+                }
             });
         } catch (error) {
             next(error);
