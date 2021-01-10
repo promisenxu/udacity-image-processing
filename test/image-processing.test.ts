@@ -1,14 +1,10 @@
-import path from 'path';
 import { getReadyResizedImageFilepath } from '../src/utils/image-processing';
 import { checkIfFileExist } from '../src/utils/commons';
 
 test('image can be resized', async () => {
     const resizedFilepath = await getReadyResizedImageFilepath('../../../images/source/fjord', 100, 100);
     expect(resizedFilepath).toEqual(expect.stringMatching(/fjord_w100_h100.jpg$/));
-    const fileExist = await checkIfFileExist(path.join(
-        __dirname,
-        '../src/images/cache/fjord_w100_h100.jpg'
-    ));
+    const fileExist = await checkIfFileExist(resizedFilepath);
     expect(fileExist).toBeTruthy();
 });
 

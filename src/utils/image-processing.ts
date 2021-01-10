@@ -44,7 +44,6 @@ export const getReadyResizedImageFilepath = async (
     height?: number
 ) => {
     const sourceFilepath = getSourceImageFilepath(fileNameWithoutExtension);
-    console.log(`Source ${sourceFilepath}`);
     const doesSourceExist = await checkIfFileExist(sourceFilepath);
     if (!doesSourceExist) {
         throw new Error('Source image does not exist');
@@ -55,7 +54,6 @@ export const getReadyResizedImageFilepath = async (
         width,
         height
     );
-    console.log(`Cache ${cacheFilepath}`);
     const doesCacheVersionExist = await checkIfFileExist(cacheFilepath);
 
     // If a cache version doesn't exist, create one
