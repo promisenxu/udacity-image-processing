@@ -1,5 +1,5 @@
 import express, { Request } from 'express';
-import { getReadyResizedImageFilepath } from '../utils/image-processing';
+import { getReadyResizedImageFilepath } from '../image-processing';
 
 const router = express.Router();
 
