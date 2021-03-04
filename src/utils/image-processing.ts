@@ -6,7 +6,7 @@ const FILE_EXTENSION = ".jpg";
 const SOURCE_IMAGES_FOLDER = "../images/source";
 const CACHE_IMAGES_FOLDER = "../images/cache";
 
-const getSourceImageFilepath = (fileNameWithoutExtension: string) => {
+const getSourceImageFilepath = (fileNameWithoutExtension: string): string => {
   return path.join(
     __dirname,
     SOURCE_IMAGES_FOLDER,
@@ -18,7 +18,7 @@ const getResizedImageCacheFilepath = (
   fileNameWithoutExtension: string,
   width?: number,
   height?: number
-) => {
+): string => {
   return path.join(
     __dirname,
     CACHE_IMAGES_FOLDER,
@@ -33,7 +33,7 @@ const resizeImageToFilepath = async (
   destinationFilepath: string,
   width?: number,
   height?: number
-) => {
+): Promise<void> => {
   await sharp(sourceFilepath).resize(width, height).toFile(destinationFilepath);
 };
 

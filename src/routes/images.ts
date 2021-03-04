@@ -16,7 +16,7 @@ router.get(
     >,
     res: Response,
     next: NextFunction
-  ) => {
+  ): Promise<void> => {
     if (!req.params.imageName) {
       res.status(400);
       res.send("Please specify image to resize");
@@ -27,7 +27,7 @@ router.get(
         req.query.width ? parseInt(req.query.width, 10) : undefined,
         req.query.height ? parseInt(req.query.height, 10) : undefined
       );
-      res.sendFile(cachedFilepath, (error: Error) => {
+      res.sendFile(cachedFilepath, (error: Error): void => {
         if (error) {
           res.status(400);
           res.send("Unknown error when sending response: " + error);

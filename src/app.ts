@@ -5,13 +5,13 @@ import * as imagesRoute from "./routes/images";
 
 const app = express();
 
-app.get("/", (_req, res) => {
+app.get("/", (_req, res): void => {
   res.send("This is the Image Processing API");
 });
 app.use(imagesRoute.BASE_PATH, imagesRoute.default);
 
 // Error handling
-app.use((err: Error, _req: express.Request, res: express.Response) => {
+app.use((err: Error, _req: express.Request, res: express.Response): void => {
   if (err.message === "Source image does not exist") {
     res.status(404);
   } else {
