@@ -17,16 +17,19 @@ npm start
 Then open [http://localhost:3000/](http://localhost:3000/)
 
 ### Test
+
 ```bash
 npm test
 ```
 
 ### Linting
+
 ```bash
 npm lint
 ```
 
 or, to auto fix all warnings:
+
 ```bash
 npm lintfix
 ```
