@@ -1,4 +1,4 @@
-import express, { Request } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import { getReadyResizedImageFilepath } from "../utils/image-processing";
 
 const router = express.Router();
@@ -10,12 +10,12 @@ router.get(
   async (
     req: Request<
       { imageName: string },
-      any,
-      any,
+      string,
+      Record<string, never>,
       { width?: string; height?: string }
     >,
-    res,
-    next: any
+    res: Response,
+    next: NextFunction
   ) => {
     if (!req.params.imageName) {
       res.status(400);

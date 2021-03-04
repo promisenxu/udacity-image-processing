@@ -11,7 +11,7 @@ app.get("/", (_req, res) => {
 app.use(imagesRoute.BASE_PATH, imagesRoute.default);
 
 // Error handling
-app.use((err: Error, _req: any, res: any, _next: any) => {
+app.use((err: Error, _req: express.Request, res: express.Response) => {
   if (err.message === "Source image does not exist") {
     res.status(404);
   } else {

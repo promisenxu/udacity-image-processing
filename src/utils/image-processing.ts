@@ -41,7 +41,7 @@ export const getReadyResizedImageFilepath = async (
   fileNameWithoutExtension: string,
   width?: number,
   height?: number
-) => {
+): Promise<string> => {
   const sourceFilepath = getSourceImageFilepath(fileNameWithoutExtension);
   const doesSourceExist = await checkIfFileExist(sourceFilepath);
   if (!doesSourceExist) {
