@@ -1,10 +1,10 @@
 import sharp from 'sharp';
 import path from 'path';
-import { checkIfFileExist } from './utils/commons';
+import { checkIfFileExist } from './commons';
 
 const FILE_EXTENSION = '.jpg';
-const SOURCE_IMAGES_FOLDER = './images/source';
-const CACHE_IMAGES_FOLDER = './images/cache';
+const SOURCE_IMAGES_FOLDER = '../images/source';
+const CACHE_IMAGES_FOLDER = '../images/cache';
 
 const getSourceImageFilepath = (fileNameWithoutExtension: string) => {
     return path.join(
