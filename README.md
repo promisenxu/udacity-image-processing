@@ -1,4 +1,4 @@
-# Image Processing - Fullstack JavaScript Nano Degree - Udacity
+# Image Processing - Udacity
 
 ## Overview
 
