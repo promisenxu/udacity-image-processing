@@ -3,7 +3,7 @@ import { getReadyResizedImageFilepath } from "../utils/image-processing";
 
 const router = express.Router();
 
-export const BASE_PATH = "/images";
+export const IMAGE_RESIZING_ROUTE_BASE_PATH = "/images";
 
 router.get(
   "/:imageName",
@@ -17,15 +17,35 @@ router.get(
     res: Response,
     next: NextFunction
   ): Promise<void> => {
+    // Checking parameters
     if (!req.params.imageName) {
       res.status(400);
-      res.send("Please specify image to resize");
+      res.send("Please specify imageName in the query parameters");
+      return;
     }
+    if (!req.query.width || !req.query.height) {
+      res.status(400);
+      res.send("Please specify width and height in the query parameters");
+      return;
+    }
+    const widthAsNumber = parseInt(req.query.width, 10);
+    const heightAsNumber = parseInt(req.query.height, 10);
+    if (
+      isNaN(widthAsNumber) ||
+      isNaN(heightAsNumber) ||
+      widthAsNumber <= 0 ||
+      heightAsNumber <= 0
+    ) {
+      res.status(400);
+      res.send("Please specify width and height in positive numbers");
+      return;
+    }
+
     try {
       const cachedFilepath = await getReadyResizedImageFilepath(
         req.params.imageName,
-        req.query.width ? parseInt(req.query.width, 10) : undefined,
-        req.query.height ? parseInt(req.query.height, 10) : undefined
+        widthAsNumber,
+        heightAsNumber
       );
       res.sendFile(cachedFilepath, (error: Error): void => {
         if (error) {

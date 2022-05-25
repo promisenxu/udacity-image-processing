@@ -5,10 +5,10 @@ import * as imagesRoute from "./routes/images";
 
 const app = express();
 
-app.get("/", (_req, res): void => {
+app.get("/", (_req: express.Request, res: express.Response): void => {
   res.send("This is the Image Processing API");
 });
-app.use(imagesRoute.BASE_PATH, imagesRoute.default);
+app.use(imagesRoute.IMAGE_RESIZING_ROUTE_BASE_PATH, imagesRoute.default);
 
 // Error handling
 app.use((err: Error, _req: express.Request, res: express.Response): void => {

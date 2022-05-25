@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "postbuild": "copyfiles -u 1 src/images/source/* dist && mkdir -p dist/images/cache",
-    "start": "tsc && copyfiles -u 1 src/images/source/* dist && mkdir -p dist/images/cache && node dist/index.js",
+    "postbuild": "mkdir -p images/cache",
+    "start": "tsc && mkdir -p images/cache && node dist/index.js",
     "debug": "npm run start",
     "test": "jest",
-    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "npx eslint . --ext .ts,.tsx",
+    "prettier": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,6 @@
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "babel-jest": "^26.6.3",
-    "copyfiles": "^2.4.1",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "jest": "^26.6.3",
